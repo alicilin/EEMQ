@@ -1,0 +1,22 @@
+{
+  "name": "mq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "exports": {
+    "./publisher": "./Publisher.js",
+    "./consumer": "./Consumer.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "date-fns": "^2.30.0",
+    "msgpackr": "^1.9.5"
+  }
+}

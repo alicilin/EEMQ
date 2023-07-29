@@ -2,17 +2,17 @@ import { differenceInMilliseconds } from 'date-fns';
 import { pack } from 'msgpackr';
 import { connect } from 'amqplib';
 export class Publisher {
-    constructor(rabbitURL, ns) {
+    constructor(ns, rabbitURL) {
         this.ns = ns;
         this.connection = null;
         this.rabbitURL = rabbitURL || process.env.RABBIT_URL;
     }
 
-    async publish({ event, message, id = null, delay = null }) {
+    async publish({ event, message, delay = null }) {
         try {
             this.connection = await connect(this.rabbitURL);
             let channel = await this.connection.createChannel();
-            let packx = { id, ns: this.ns, event, message };
+            let packx = { ns: this.ns, event, message };
             let exchange = `${this.ns}:${event}_DIRECT_EXCHANGE`;
             let route = `${this.ns}:${event}_DIRECT_EXCHANGE`;
             let options = { persistent: true };

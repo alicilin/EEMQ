@@ -3,7 +3,7 @@ import { connect } from 'amqplib';
 import { EventEmitter } from 'node:events';
 import { Publisher } from './Publisher.js';
 export class Consumer extends EventEmitter {
-    constructor(rabbitURL = null, ns) {
+    constructor(ns, rabbitURL = null,) {
         super();
         this.ns = ns;
         this.connection = null;
